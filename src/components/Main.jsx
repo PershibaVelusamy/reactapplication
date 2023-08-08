@@ -1,15 +1,19 @@
-import React,{useState,useEffect,createContext,useRef} from 'react'
+import React,{useState,useEffect,createContext,useRef, useCallback} from 'react'
 import Todos from './Todo';
 import './main.css'
+import useFetch from './useFetch'
 export const Main=()=> {
     const [count, setCount] = useState(0);
     const [todos, setTodos] = useState(0);
     const UserContext = createContext();
     const previousInputValue = useRef("");
+    const [data] = useFetch('https://jokeapi-v2.p.rapidapi.com/joke/Any?format=json&contains=C%2523&idRange=0-150&blacklistFlags=nsfw%2Cracist');
+console.log(data,"dfghjkl")
 
-    const increment = () => {
-      setCount((c) => c + 1);
-    };
+const increment= useCallback(()=>{
+    setCount((c) => c + 1);
+},[count])
+  
     const decreament = () => {
         if(count>0){
       setCount((c) => c - 1);
@@ -44,7 +48,11 @@ export const Main=()=> {
        previous Count: {previousInputValue.current}
         </h1>
 
+<h1>Jokes</h1>
+<h3>{data?.setup}</h3>
+<h5>{data?.delivery}</h5>
       </div>
+
       </UserContext.Provider>
      
     </>
