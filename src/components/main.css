@@ -1,0 +1,19 @@
+.mainWrapper{
+    text-align: center;
+}
+
+.button{
+    width: 150px;
+    margin-left: 10px;
+    background-color: cornflowerblue;
+    border: none;
+    height: 41px;
+    border-radius: 10px;
+    margin-top: 22px;
+font-size: 16px;
+font-weight: bold;
+}
+
+.counterdiv{
+    display: inline-flex;
+}
